@@ -54,7 +54,7 @@ export async function getStaticProps({
   params: { prefix, slug, suffix },
   locale
 }) {
-  const fullSlug = prefix + '/' + slug + '/' + suffix.join('/')
+  const fullSlug = `${prefix}/${slug}/${suffix.join('/')}`.replace(/\/{2,}/g, '/');
   const from = `slug-props-${fullSlug}`
   const props = await getGlobalData({ from, locale })
 
