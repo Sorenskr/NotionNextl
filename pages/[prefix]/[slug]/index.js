@@ -46,7 +46,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { prefix, slug }, locale }) {
-  const fullSlug = prefix + '/' + slug
+  const fullSlug = `${prefix}/${slug}`.replace(/\/{2,}/g, '/');
   const from = `slug-props-${fullSlug}`
   const props = await getGlobalData({ from, locale })
 
